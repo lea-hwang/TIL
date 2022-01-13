@@ -4,11 +4,19 @@
 
 ![git image](git.assets/git.png)
 
-working directory : 현재 작업 공간
+- working directory : 현재 작업 공간
 
-staging area: 
+- staging area: 
 
-local repository: 
+- local repository: 버전 관리를 하고 있는 공간
+
+
+
+- untracked : staging area에 올라가 있지 않은 파일 및 폴더
+
+- tracked : staging area에 이미 올라간 적이 있는 파일 및 폴더
+
+
 
 ### 명령어
 
@@ -29,10 +37,4 @@ local repository:
 `git commit -m '{메세지 내용}'`: 메모를 작성할 수 있음
 
 `git log`: commit 내용을 보여줌
-
-
-
-- untracked : staging area에 올라가 있지 않은 파일 및 폴더
-
-- tracked : staging area에 이미 올라간 적이 있는 파일 및 폴더
 
