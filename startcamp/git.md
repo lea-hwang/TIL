@@ -80,6 +80,8 @@
 
 #### 8. 로컬 내용 원격 저장소에 올리기
 
+`git push origin master`: 원격 저장소에 commit
+
 `git push -u origin master`: 원격 저장소에 commit 된 내용 올리기
 
 
