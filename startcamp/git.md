@@ -1,4 +1,14 @@
-## Git
+# Git
+
+## git의 기본적인 구조
+
+![git image](git.assets/git.png)
+
+working directory : 현재 작업 공간
+
+staging area: 
+
+local repository: 
 
 ### 명령어
 
@@ -20,8 +30,9 @@
 
 `git log`: commit 내용을 보여줌
 
-![git image](./git.png)
 
-untracked : staging area에 올라가 있지 않은 파일 및 폴더
 
-tracked : staging area에 이미 올라간 적이 있는 파일 및 폴더
+- untracked : staging area에 올라가 있지 않은 파일 및 폴더
+
+- tracked : staging area에 이미 올라간 적이 있는 파일 및 폴더
+
