@@ -4,20 +4,19 @@
 
 ![image-20220113172817257](git.assets/image-20220113172817257.png)
 
-로컬 저장소(git)
+- 로컬 저장소(git)
 
-- working directory : 현재 작업 공간
-
-- staging area: 수정된 코드를 올리는 공간
-
-- local repository: 버전 관리를 하고 있는 공간(최종본 올리기)
+  - working directory : 현재 작업 공간
 
 
+  - staging area: 수정된 코드를 올리는 공간
 
-원격 저장소(github)
 
-- remote repository: 원격 저장소
+  - local repository: 버전 관리를 하고 있는 공간(최종본 올리기)
 
+
+- 원격 저장소(github)
+  - remote repository: 원격 저장소
 
 
 - untracked : staging area에 올라가 있지 않은 파일 및 폴더
