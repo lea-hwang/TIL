@@ -1,8 +1,8 @@
 # Git
 
-## git의 기본적인 구조
+## 기본적인 구조
 
-![git image](git.assets/git.png)
+![image-20220113172817257](git.assets/image-20220113172817257.png)
 
 로컬 저장소(git)
 
