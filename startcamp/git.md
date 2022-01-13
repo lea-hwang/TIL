@@ -79,9 +79,9 @@
 
 #### 8. 로컬 내용 원격 저장소에 올리기
 
-`git push origin master`: 원격 저장소에 commit
+`git push -u origin master`: 원격 저장소에 commit된 내용을 올리는데, origin에 master branch로 올리기
 
-`git push -u origin master`: 원격 저장소에 commit 된 내용 올리기
+`git push`: 원격 저장소에 commit 된 내용 올리기
 
 
 
