@@ -1,92 +1,194 @@
 # Git
 
+> git은 분산버전관리시스템(DVCS, Distributed Version Control System) 
+>
+> 소스 코드의 버전을 관리하고 이력도 관리할 수 있다.
+
+## 준비하기
+
+1. 윈도우에 git을 설치한다. (git bash 설치)
+
+2. 초기 설치 완료 후 로컬 컴퓨터에 Author 정보를 설정해야한다.
+
+   ```bash
+   $ git config --global user.email {유저이메일}
+   $ git config --global user.name {유저이름}
+   
+   $ git config -- global -l       // 설정 값을 확인하는 명령어
+   ```
+
+
+
+## 로컬 저장소
+
+### 1. 저장소 초기화
+
+> 주의: git 안에서 git을 안하는게 좋음(따로 관리할 필요가 있음)
+
+```bash
+$ git init
+
+-/ssafy (master)	//  master 브랜치명 확인으로 git 관리여부 확인
+```
+
+|                      Working directory                       |                         Staging Area                         |           Local Resipotory (commit)            |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :--------------------------------------------: |
+| 실제 작업되는 공간<br />변경점이 나타나면 이곳에 파일이 등록 | commit 되기 전 임시로 파일들이 보여지는 곳 <br /> 이곳에서 commit 되어도 되는지 파일을 확인 | git으로 관리되는 파일들의 버전들이 저장되는 곳 |
+
+
+
+### 2. 상태를 확인
+
+```bash
+$ git status	//WD, SA의 상태를 확인하기 위한 명령어
+```
+
+- Untracked
+  - git으로 관리되지 않았던 파일이 등록된 경우
+  - WD에서 해당 단어를 확인할 수 있음
+- Tracked
+  - New file: git으로 관리되지 않았던 파일이 Staging Area에 등록되었을 때 확인할 수 있음
+  - modified: git으로 관리되는데 수정된 파일이 Staging Area에 등록되었을 때 확인할 수 있음
+
+
+
+### 3. gitignore
+
+> 주의: gitignore에 먼저 등록하고 add를 하자!!
+>
+> 미리 add 되어 있으면  gitignore에 등록되어 있어도 계속 관리됨
+
+- 프로젝트에 관련 없는 파일을 등록하여 commit 되지 않도록 하는 것
+  - 민감한 개인 파일
+  - 개인 컴퓨터 설정파일 (OS에서 활용되는 파일)
+  - IDE 환경 설정 파일(.idea/)
+  - 가상환경 폴더 및 파일(venv/)
+
+- `.gitignore` 파일을 생성(확장자는 따로 없음)
+  - 제외하고 싶은 파일을 등록
+  - 파일명을 적어주면 끝
+- gitignore.io 를 이용하면 편하게 gitignore 파일을 작성할 수 있음
+  - 단, 우리가 생성한 파일은 우리가 직접 등록해야 함(단순 참고 용도인 파일들)
+
+
+
+### 4. Commit을 위한 준비
+
+```bash
+$ git add {파일명}
+$ git add . 	//현재 폴더 내에 있는 변경/추가된 파일 모두를 등록
+$ git restore --staged {파일명} 	// 잘못 add한 파일 다시 등록 취소하기
+```
+
+- Working Directory에서 Staging Area로 관리 파일들을 이동시키는  명령어
+- Staging Area에서 관리 대상에 대한 판단을 하고 commit 여부를 결정
+
+
+
+### 5. Commit 하기
+
+```bash
+$ git commit -m '{커밋 메세지}'
+```
+
+- 버전 이력을 확정짓는 명령어
+- 해당 시점의 파일 상태를 스냅샷으로 기록해 남긴다.
+
+
+
+### 6. Commit 이력 확인하기
+
+```bash
+$ git log
+$ git log --oneline		// 한 줄로 축약해서 보여줌
+$ git log -p			// 파일의 변경 내용도 같이 보여줌
+$ git log -{숫자}		   // 숫자만큼만 보여줌
+```
+
+
+
+## 원격저장소(remote Repository)
+
+- github / gitlab / bitbucket
+
+### 1. 원격저장소 등록
+
+- 사용을 하기 위해서는 로컬에 원격 저장소의 url 주소를 등록해야함
+
+  ```bash
+  $ git remote add {저장소별명(origin)} {저장소주소}
+  ```
+
+- 등록된 원격 저장소의 주소를 확인하는 방법
+
+  ```bash
+  $ git remote -v
+  ```
+
+- 저장소 삭제
+
+  ```bash
+  $ git remote rm {저장소 별명}
+  ```
+
+
+
+### 2. 원격 저장소에 commit 내용 보내기
+
+- 로컬에 저장된 commit을 원격 저장소로 전달하여 분산 버전 관리를 완성하는 부분
+
+  ```bash
+  $ git push {저장소별명} {브랜치명}
+  $ git push -u origin master
+  ```
+
+  - `-u`: --set-upstream의 shortcut 형태이고 저장소 별명과 브랜치 명을 설정
+
+
+
+## 원격저장소에서 내려받기
+
+### 1. git clone
+
+- `git init`, `git remote add` 동작이 포함된 내려받기 명령어
+- 아무것도 없는 상태일 때 사용
+- `git clone {리모트레포주소}`
+
+
+
+### 2. git pull
+
+- remote 서버의 정보를 내려받는 명령어
+- git이 적용되어 있어야 한다.(.git 폴더가 존재해야 함)
+- remote 정보가 등록되어 있어야 함
+- `git pull {리모트별명} {브랜치명}` -> `git pull origin master`
+
+
+
+### 기타)
+
+#### submodule warning 메세지를 봤을 때
+
+1. 어떤 폴더가 submodule 인지 확인
+2. 해당 폴더로 찾아가서 .git 폴더를 제거
+3. 이미 Staging Area에 올라간 상태라면
+4. `git rm -rf --cashed {폴더명}` 으로 해당 폴더를 Staging Area 에서 Working Directory로 내림
+5. `git status`로 다시 상태를 체크하고
+6. `git add` 로 Staging Area에 다시 올림
+7. 그리고 다시 `git status` 로 Staging Area에 올라온 상태를 파악하고
+8. `git commit`을 함
+
+- 싸피 1학기 과정에서는 sub module 사용계획X
+- CLI 환경에서 (master)가 보이면 git init을 하지 않는게 좋음
+
+
+
 ## 기본적인 구조
 
 ![image-20220113172817257](git.assets/image-20220113172817257.png)
 
-- 로컬 저장소(git)
-
-  - working directory : 현재 작업 공간
-
-
-  - staging area: 수정된 코드를 올리는 공간
-
-
-  - local repository: 버전 관리를 하고 있는 공간(최종본 올리기)
-
-
-- 원격 저장소(github)
-  - remote repository: 원격 저장소
-
-
-- untracked : staging area에 올라가 있지 않은 파일 및 폴더
-
-- tracked : staging area에 이미 올라간 적이 있는 파일 및 폴더
 
 
 
-### 명령어
-
-#### 1. 현재 폴더 git 생성
-
-`git init`:해당 폴더를 git으로 관리 시작, repository 생성
-
-
-
-#### 2. 현재 폴더의 상태 파악
-
-`git status`: 현재 working directory 및 staging area의 상태
-
-
-
-#### 3. 사용자 정보 등록
-
-`git config --global user.email {이메일}` : 이메일 등록
-
-`git config --global user.name {이름}` : 이름 등록
-
-
-
-#### 4. staging area에 파일 및 폴더 옮기기
-
-`git add {파일 및 폴더명}` : working directory에서 staging area로 올리기
-
-`git add .` : 현재 working directory의 모든 파일을 올리기
-
-
-
-#### 5. local repository에 파일 및 폴더 옮기기
-
-`git commit`: staging area에서 local repository로 올리기
-
-`git commit -m '{메세지 내용}'`: 메모를 작성할 수 있음
-
-
-
-#### 6. 현재 local repository에 commit된 내용 보기
-
-`git log`: commit한 내용을 보여줌
-
-
-
-#### 7. 원격 저장소 정보 등록
-
-`git remote add origin {url}`: 원격 저장소 추가
-
-* origin -> 주소의 이름(별명) ex)우리집, 본가
-
-
-
-#### 8. 로컬 내용 원격 저장소에 올리기
-
-`git push -u origin master`: 원격 저장소에 commit된 내용을 올리는데, origin에 master branch로 올리기
-
-`git push`: 원격 저장소에 commit 된 내용 올리기
-
-
-
-#### 9. 현재 등록된 원격저장소 보기
-
-`git remote -v`: 현재 저장된 원격저장소 보기
 
  
