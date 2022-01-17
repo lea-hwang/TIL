@@ -374,10 +374,11 @@ print(*b, sep="")
 
 ```python
 def flip_over(a):
-  	new_word = ''
-  	for letter in a:
-    	new_word = letter + new_word
-  	return new_word
+#  	new_word = ''
+#  	for letter in a:
+#    	new_word = letter + new_word
+#  	return new_word
+	return a[::-1]
 word = input()
 word2 = flip_over(word)
 if word == word2:
