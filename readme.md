@@ -6,7 +6,7 @@
 - [ ] 오늘 배운 내용 정리
 - [ ] 파이썬 내용 정리
   - [ ] [python_01](python/python_01.md) -> 패킹/ 언패킹 부터 다시
-  - [ ] [python_02](python/python_02.md)
+  - [x] [python_02](python/python_02.md)
 
 ### 2022.01.17
 

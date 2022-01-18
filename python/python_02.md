@@ -2,11 +2,11 @@
 
 - 위에서 아래로 순차적으로 명령 수행
 
-### 조건문(Conditional Statement)
+## 조건문(Conditional Statement)
 
-#### 조건문 기본
+### 조건문 기본
 
-- 조건식으로 참/거짓을 판단하여 상황에 따른 코드 작성
+> 조건식으로 참/거짓을 판단하여 상황에 따른 코드 작성
 
 - expression에는 참/거짓에 대한 조건식
 
@@ -32,20 +32,20 @@
 
   
 
-#### 복수 조건문
+### 복수 조건문
 
-- 복수의 조건식을 활용할 경우 `elif`를 활용
+>  복수의 조건식을 활용할 경우 `elif`를 활용
 
-  ```python
-  if <expression>:
-      # Code block
-  elif <expression>:
-      # Code block
-  elif <expression>:
-      # Code block
-  else: # expression이 들어갈 수 없음
-      # Code block
-  ```
+```python
+if <expression>:
+    # Code block
+elif <expression>:
+    # Code block
+elif <expression>:
+    # Code block
+else: # expression이 들어갈 수 없음
+    # Code block
+```
 
 - 예시
 
@@ -67,24 +67,26 @@
       print('좋음')
   ```
 
-#### 중첩 조건문
 
-- if 문을 여러개 중첩하여 작성한 조건문
 
-  ```python
-  if <expression>:
-      # Code block
-      if <expression>:
-          # Code block
-  else:
-      # Code block
-  ```
+### 중첩 조건문
 
-  
+> if 문을 여러개 중첩하여 작성한 조건문
+
+```python
+if <expression>:
+    # Code block
+    if <expression>:
+        # Code block
+else:
+    # Code block
+```
+
+
 
 ### 조건 표현식(Conditional Expression)
 
-- 조건에 따라 값을 정할 때 활용
+> 조건에 따라 값을 정할 때 활용
 
 - 삼항 연산자(Ternary Operator)로 부르기도 함
 
@@ -97,7 +99,7 @@
   > value는 절대값
 
   ```python
-  value = num if num>=0 else -num
+  value = num if num >= 0 else -num
   ```
 
 
@@ -106,12 +108,12 @@
 
 ### While 문
 
-- 조건식이 참인 경우 반복적으로 코드를 실행
+>  조건식이 참인 경우 반복적으로 코드를 실행
 
-  ```python
-  while <expression>:
-      # Code block
-  ```
+```python
+while <expression>:
+    # Code block
+```
 
 - 예시
 
@@ -135,34 +137,35 @@
 
   
 
-### for 문
+### For 문
 
-- for문은 시퀀스(string, tuple, list, range)를 포함한 **순회가능한(iterable)** 객체 요소를 모두 순회함
+>  for문은 시퀀스(string, tuple, list, range)를 포함한 **순회가능한(iterable)** 객체 요소를 모두 순회함
+>
+> > **Iterable** 
+> >
+> > - 순회할 수 있는 자료형(str, list, dict 등)
+> >
+> > - 순회형 함수(range, enumerate)
 
-  > iterable 
-  >
-  > - 순회할 수 있는 자료형(str, list, dict 등)
-  > - 순회형 함수(range, enumerate)
-
-  ```python
-  for <변수명> in <iterable>:
-      # Code block
-  ```
+```python
+for <변수명> in <iterable>:
+    # Code block
+```
 
 - 문자열(String) 순회
 
   ```python
   chars = 'happy'
-  
   # 1. 단순히 순회 (for)
   for char in chars:
       print(char)
+      
   # 2. 인덱스로 접근 => 0 ~ 길이-1(반복)
   for idx in range(len(chars)):
       print(chars[idx])
   ```
 
-- 딕셔너리(dictionary) 순회
+- 딕셔너리(Dictionary) 순회
 
   ```python
   grades = {'kim' : 80, 'lee' : 100}
@@ -184,128 +187,161 @@
 
   - 인덱스와 객체를 쌍으로 담은 열거형(enumerate) 객체 반환
 
-    > \>>> enumerate(iterable) 
-    >
-    > [(idx, iterable[idx]), ...]
+    ```python
+    >>> enumerate(iterable)
+    # [(idx, iterable[idx]), ...]
+    ```
 
-  ```python
-  chars = 'happy'
-  for idx, value in enumerate(chars):
-      # idx, value = (0, 'h')
-      print(idx, value)
-  ```
+  - 예시
+
+    ```python
+    chars = 'happy'
+    for idx, value in enumerate(chars):
+        # idx, value = (0, 'h')
+        print(idx, value)
+    ```
 
 - List Comprehension
+
+  > 표현식과 제어문을 통해 특정한 값을 가진 리스트를 간결하게 생성하는 방법
 
   ```python
   [<expression> for <변수> in iterable]
   [<expression> for <변수> in iterbale if <조건식>]
   ```
 
-- 예시
+  - 예시
 
-  > 1~3의 세제곱의 결과가 담긴 리스트
+    > 1~3의 세제곱의 결과가 담긴 리스트
+
+    ```python
+    cubic_list = []
+    for number in range(1,4):
+        cubic_list
+    [number **3 for number in range(1,4)]
+    ```
+
+    > 1~30 숫자 중에 홀수만 출력
+
+    ```python
+    # 1. for문 
+    numbers = []
+    for i in range(1,31):
+        if i % 2:
+            numbers.append(i)
+    print(numbers)
+    # 2. List comprehension 사용
+    numbers_2 = [i for i in range(1,31) if i % 2 == 1]
+    print(numbers_2)
+    ```
+
+- Dictionary Comprehension
+
+  > 표현식과 제어문을 통해 딕셔너리를 간결하게 생성하는 방법
 
   ```python
-  cubic_list = []
-  for number in range(1,4):
-      cubic_list
-  [number **3 for number in range(1,4)]
+  # 기본형
+  {key: value for <변수> in <iterable>}
+  # 조건식이 있는 경우
+  {key: value for <변수> in <iterable> if <조건식>}
   ```
 
-  > 1~30 숫자 중에 홀수만 출력
+  - 예시
 
-  ```python
-  numbers = []
-  for i in range(1,31):
-      if i % 2:
-          numbers.append(i)
-  print(numbers)
-  
-  numbers_2 = [i for i in range(1,31) if i % 2 == 1]
-  print(numbers_2)
-  ```
+    ```python
+    # 1. for문
+    cubic_dict = {}
+    for i in range(1,4):
+        cubic_dict[number] = number**3
+    cubic_dict # {1: 1, 2: 8, 3: 27}
+    
+    # 2. Dictionary comprehension
+    {i: i**3 for i in range(1,4)}
+    ```
 
-  
+
 
 ### 반복문 제어
 
 - `break`
 
-  - 반복문을 종료
+  > 반복문을 종료
 
-  ```python
-  for i in range(10):
-      if i > 1:
-          print('0과 1만 출력')
-          break
-      print(i)
-  # 0
-  # 1
-  # 0과 1만 출력
-  ```
+  - 예시
+
+    ```python
+    for i in range(10):
+        if i > 1:
+            print('0과 1만 출력')
+            break
+        print(i)
+    # 0
+    # 1
+    # 0과 1만 출력
+    ```
 
 - `continue`
 
-  - continue 이후의 코드 블록을 수행하지 않고, 다음 반복을 수행
+  >  continue 이후의 코드 블록을 수행하지 않고, 다음 반복을 수행
 
   - `pass`와 비교
 
-  ```python
-  for i in range(3):
-      if i > 1:
-          pass # 나중에 로직을 쓸때 사용하면 좋음
-      print(i)
-  # 0
-  # 1
-  # 2
-  for i in range(3):
-      if i > 1:
-          continue
-      print(i)
-  # 0
-  # 1
-  ```
-
-  
+    ```python
+    # pass: 해당 if문만 빠져나감
+    for i in range(3):
+        if i > 1:
+            pass # 나중에 로직을 쓸때 사용하면 좋음
+        print(i)
+    # 0
+    # 1
+    # 2
+    
+    # continue: for문에서 다음으로 넘어감
+    for i in range(3):
+        if i > 1:
+            continue
+        print(i)
+    # 0
+    # 1
+    ```
 
 - `for-else`
 
-  - 끝까지 반복문을 실행한 이후에 else 문 실행
-  - **break을 통해 중간에 종료된 경우 else문은 실행되지 않음**
-
-  ```python
-  for char in 'banana':
-      if char == 'b':
-          print('b!')
-          break
-  else: # break를 통해 중단되면 실행되지 않음
-      print('b가 없습니다.')
+  >  끝까지 반복문을 실행한 이후에 else 문 실행
+  >
+  > **break을 통해 중간에 종료된 경우 else문은 실행되지 않음**
   
-  # 좀 더 복잡한 코드
-  is_b = False
-  for char in 'banana':
-      if char == 'b':
-          is_b = True
-          break
-  if is_b:
-      print('b가 있습니다.')
-  else:
-      print('b가 없습니다.')
-      
-  ```
-
+  - 예시
   
+    ```python
+    for char in 'banana':
+        if char == 'b':
+            print('b!')
+            break
+    else: # break를 통해 중단되면 실행되지 않음
+        print('b가 없습니다.')
+    
+    # 좀 더 복잡한 코드
+    is_b = False
+    for char in 'banana':
+        if char == 'b':
+            is_b = True
+            break
+    if is_b:
+        print('b가 있습니다.')
+    else:
+        print('b가 없습니다.')
+    ```
 
-## for vs while
+
+
+### for vs while
 
 | for                        | while                                   |
 | -------------------------- | --------------------------------------- |
 | 반복가능한 애들을 꺼내준다 | 조건이 참일 때 실행 <br >종료조건(거짓) |
 
 => 결과 변수 초기화
-
-
 
 
 

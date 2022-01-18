@@ -252,7 +252,44 @@
 
 ### NoneType
 
-> '값이 없음' 표현
+> 값이 Null 이거나 사용할 수 없음 
+
+```python
+# 주의
+type([])		# list
+type(print())	# NoneType
+None == 0 		# False
+None == False 	# False
+None == '' 		# False
+None == []		# False
+None == {}		# False
+```
+
+- 값이 존재하지 않는 경우(값을 알 수 없는 경우)
+
+  - 예시
+
+    ```python
+
+- 값이 '없음'인 경우
+
+  - 예시
+
+    ```python
+    
+    ```
+
+- 값이 정의되지 않은 경우
+
+  - 예시
+
+    ```python
+
+- 값을 초기화하여 사용하는 경우
+
+  - 예시
+
+    ```python
 
 
 
@@ -294,7 +331,7 @@
 
   > 생성시 주의사항
   >
-  > - 단일 항목의 경우, 생성시 값 뒤에 쉼표를 붙여야 함 
+  > - 단일 항목의 경우, 생성시 값 뒤에 쉼표를 붙여야 함 -> 안붙이면 int/string 형으로 됨
   >
   >   (1,)
   >
@@ -321,3 +358,99 @@
 ------
 
 패킹/언패킹 부터 내일
+
+---
+
+### 비시퀀스형 컨테이너 (Associative Container)
+
+#### 셋(Set)
+
+> 순서없이 0개 이상의 **해시가능한** 객체를 참조하는 자료형 
+
+
+
+#### 딕셔너리(Dictionary)
+
+
+
+#### 형 변환(Typecasting)
+
+> 데이터의 형태를 서로 변환할 수 있음
+
+- 암시적 형 변환(Implicit Typecasting)
+
+- 명시적 형 변환(Explicit Typecasting)
+
+
+
+#### 연산자(Operator)
+
+- 산술 연산자(Arithmetic Operator)
+
+  > 기본적인 사칙연산 및 수식 계산
+
+- 비교 연산자(Comparison Operator)
+
+  > 값을 비교하며, `True` / `False` 값을 리턴
+
+- 논리 연산자(Logical Operator)
+
+  > 논리식을 판단하여, `True` / `False` 값을 리턴
+
+- 복합 연산자(In-place Operator)
+
+  > 연산과 대입이 함께 이루어짐
+
+- 멤버십 연산자(Membership Operator)
+
+  > 시퀀스 내 포함 여부를 확인
+
+- 식별 연산자(Identity Operator)
+
+  > 동일한 객체(object)인지 확인
+
+- 시퀀스형 연산자(Sequence Type Operator)
+
+  - 산술연산자(+)
+
+    > 시퀀스 간의 연결(concatenation)
+
+  - 반복연산자(*)
+
+    > 시퀀스를 반복
+
+  - 인덱싱(Indexing)
+
+    > 시퀀스의 특정 인덱스 값에 접근
+
+  - 슬라이싱(Slicing)
+
+    > 시퀀스를 특정 단위로 슬라이싱
+
+- set 연산자
+
+  | `|`    | `&`    | `-`    | `^`    |
+  | ------ | ------ | ------ | ------ |
+  | 합집합 | 교집합 | 여집합 | 대칭차 |
+
+
+
+- 연산자 우선순위
+
+|  1   |    2    |    3     |  4   |            5            |            6             |        7        |            8            |  9   |  10  |  11  |
+| :--: | :-----: | :------: | :--: | :---------------------: | :----------------------: | :-------------: | :---------------------: | :--: | :--: | :--: |
+|  0   | Slicing | Indexing |  **  | 단항연산자(+, -) : 부호 | 산술연산자 <br>(*, /, %) | 산술연산자(+,-) | 비교연산자 <br>(in, is) | not  | and  |  or  |
+
+
+
+#### 컨테이너 형 변환(Container Typecasting)
+
+|            | string |    list    |   tuple    | range |    set     | dictionary |
+| :--------: | :----: | :--------: | :--------: | :---: | :--------: | :--------: |
+|   string   |        |     O      |     O      |   X   |     O      |     X      |
+|    list    |   O    |            |     O      |   X   |     O      |     X      |
+|   tuple    |   O    |     O      |            |   X   |     O      |     X      |
+|   range    |   O    |     O      |     O      |       |     O      |     X      |
+|    set     |   O    |     O      |     O      |   X   |            |     X      |
+| dictionary |   O    | O (key 만) | O (key 만) |   X   | O (key 만) |            |
+
