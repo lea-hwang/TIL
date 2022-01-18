@@ -55,8 +55,13 @@
 
     > False, None, True, and, as, assert, async, await, break, class, continue, def, del, elif, else, except, finally, for, from, global, if, import, in, is, lambda, nonlocal, not, or, pass, raise, return, try, while, with, yield
 
+    ```python
+    import keyword
+    print(keyword.kwlist)
+    ```
+  
   - 내장함수나 모듈 등의 이름으로도 식별자로 사용할 수 없음
-
+  
     ```python
     print = 'hi'
     print(5)
@@ -113,6 +118,8 @@
 - bool() 함수
 
   > 특정 데이터가 참인지 거짓인지 검증
+
+
 
 ### 수치형(Numeric Type)
 
@@ -235,7 +242,7 @@
   print("Hello, 내 이름은 {}").format(name)
   ```
 
-- f-strings -> python3.6+
+- **f-strings** -> python3.6+
 
   ```python
   print(f"Hello, 내 이름은 {name}")
