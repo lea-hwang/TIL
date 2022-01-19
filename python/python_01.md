@@ -371,7 +371,25 @@ None == {}		# False
 
 #### 딕셔너리(Dictionary)
 
+>
+>
+>s
 
+- 예시
+
+  ```python
+  hi = dict(한국어='안녕', 영어='hi')
+  print(hi)
+  # {'한국어': '안녕', '영어': 'hi'}
+  
+  # 숫자를 키로 넘기면 에러 발생
+  #dict(1=1, 2=2)  # SyntaxError
+  # 해결책
+  print(dict([(1, 1), (2, 2)]))
+  print(dict(((1,1), (2,2))))
+  ```
+
+  
 
 #### 형 변환(Typecasting)
 
