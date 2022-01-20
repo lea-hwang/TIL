@@ -467,18 +467,45 @@ def function_name(parameter):
       # [('jane','justin'), ('ashley', 'eric')]
       ```
 
+      > 리스트 회전
+
+      ```python
+      # 원래
+      lst = [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9],
+      ]
+      # 전치
+      lst2 = list(map(list,zip(*lst)))
+      for i in lst2:
+          print(i)
+      
+      # 반시계 90도 회전
+      lst3 = list(map(list,zip(*lst)))[::-1]
+      for j in lst3:
+          print(j)
+      
+      # 시계 90도 회전
+      lst4 = list(map(list,zip(*lst[::-1])))
+      for k in lst4:
+          print(k)
+      ```
+  
+      
+  
   - `lambda()`
-
+  
     > 표현식을 계산한 결과값을 반환하는 함수, 익명함수
-
+  
     ```python
     lambda <parameter>: <expression>
     ```
-
+  
     -  return 문을 가질 수 없으며 간편 조건문만 사용 가능
-
+  
     - 예시
-
+  
       ```python
       # 1. 람다 함수가 없을 때
       def odd(n):

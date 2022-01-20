@@ -1,5 +1,13 @@
 # 🌱TIL (Today I Learned)
 
+### 2022.01.20
+
+- [ ] 함수 파트 정리
+  - [x] [python_03](python/python_03.md)
+  - [ ] [python_04](python/python_04.md)
+- [ ] 문제 3 풀기
+- [ ] 정처기 학습(1단원 1~3 소단원)
+
 ### 2022.01.19
 
 - [x] 오늘 배운 내용 정리
