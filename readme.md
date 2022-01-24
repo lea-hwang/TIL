@@ -1,5 +1,14 @@
 # 🌱TIL (Today I Learned)
 
+### 2022.01.24
+
+- [x] 정처기 공부
+- [x] 백준 문제 풀기
+  - [x] [1929](baekjoon/1929.md)
+  - [x] [11653](baekjoon/11653.md)
+- [ ] 오늘 배운 파이썬 복습
+  - [ ] [python_06](python/python_06.md)
+
 ### 2022.01.23
 
 - [x] 정처기 공부
