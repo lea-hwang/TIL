@@ -13,7 +13,7 @@
 
 - 문법 에러(Syntax Error)
 
-  > SyntaxError 가 발생하면, 파이썬 프로그램은 **실행되지 않음**
+  > SyntaxError가 발생하면, 파이썬 프로그램은 **실행되지 않음**
 
   - invalid syntax
   - assign to literal

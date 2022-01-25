@@ -5,26 +5,41 @@
 ### 문자열(String Type)
 
 > 문자들의 나열(sequence of characters)
+>
+> immutable, ordered, iterable
 
 - 문자열 조회/탐색 및 검증 메소드
 
-  | 문법        | 설명                                                         |
-  | ----------- | ------------------------------------------------------------ |
-  | s.find(x)   | x의 첫 번째 위치를 반환. 없으면 -1을 반환                    |
-  | s.index(x)  | x의 첫 번째 위치를 반환. 없으면 오류 발생                    |
-  | s.isalpha() | 알파벳 문자 여부<br> * 단순 알파벳이 아닌 유니코드 상 Letter (한국어 포함) |
-  | s.isupper() | 대문자 여부                                                  |
-  | s.islower() | 소문자 여부                                                  |
-  | s.istitle() | 타이틀 형식 여부(첫글자가 대문자)                            |
-
+  | 문법            | 설명                                                         |
+  | --------------- | ------------------------------------------------------------ |
+  | s.find(x)       | x의 첫 번째 위치를 반환. 없으면 -1을 반환                    |
+  | s.index(x)      | x의 첫 번째 위치를 반환. 없으면 오류 발생                    |
+  | s.isalpha()     | 알파벳 문자 여부<br> * 단순 알파벳이 아닌 유니코드 상 Letter (한국어 포함) |
+  | s.isupper()     | 대문자 여부                                                  |
+  | s.islower()     | 소문자 여부                                                  |
+  | s.istitle()     | 타이틀 형식 여부(첫글자가 대문자)                            |
+  | s.isspace()     | 공백 여부                                                    |
+  | s.startswith(x) | 문자열이 x로 시작하는지 여부                                 |
+  | s.endswith(x)   | 문자열이  x로 끝나는지 여부                                  |
+  
   - 예시
-
+  
     ```python
     'apple'.find('p') # 1
     'apple'.find('k') # -1
     
     'apple'.index('k') # ValueError: substring not found
     ```
+  
+- 숫자 판별 메소드
+
+  | 문법          | 설명                                     |
+  | ------------- | ---------------------------------------- |
+  | s.isdecimal() | 문자열이 0~9까지의 수로 이루어져 있는가? |
+  | s.isdigit()   | 문자열이 숫자로 이루어져 있는가?         |
+  | s.isnumeric() | 문자열을 수로 볼 수 있는가?              |
+  
+  
   
 - 문자열 변경 메소드
 
@@ -52,6 +67,13 @@
     # ->이렇게 하면 에러
     
     print(' '.join(map(str),numbers))
+    
+    # 문자열 메서드 모두 확인하기
+    print(dir('string'))
+    
+    c = 'monty python'
+    c.rstrip(' python')
+    # 'm' -> 모든 조합을 이용하여 제거된 결과
     ```
 
 ### 리스트(List)
@@ -63,13 +85,13 @@
   | 문법                   | 설명                                                         |
   | ---------------------- | ------------------------------------------------------------ |
   | L.append(x)            | 리스트 마지막에 항목 x를 추가                                |
-  | L.insert(i, x)         | 리스트 인덱스 i에 항목 x를 삽입<br>* i가 리스트 길이보다 큰 경우 맨 뒤에 x 삽입 |
+  | L.insert(i, x)         | 리스트 인덱스 i에 항목 x를 삽입<br>* **i가 리스트 길이보다 큰 경우 맨 뒤에 x 삽입** |
   | L.remove(x)            | 리스트 가장 왼쪽에 있는 항목(첫 번째) x를 제거 <br>항목이 존재하지 않을 경우, ValueError |
   | L.pop()                | 리스트 가장 오르쪽에 있는 항목(마지막)을 반환 후 제거        |
   | L.pop(i)               | 리스트 인덱스 i에 있는 항목을 반환 후 제거                   |
   | L.extend(m)            | **순회형** m의 모든 항목들의 리스트 끝에 추가 (+=과 같은 기능) -> 여러 개 추가 가능 |
   | L.index(x, start, end) | 리스트에 있는 항목 중 가장 왼쪽에 있는 항목 x의 인덱스를 반환<br>없는 경우 ValueError |
-  | L.reserve()            | 리스트 거꾸로 뒤집기                                         |
+  | L.reverse()            | 리스트 거꾸로 뒤집기                                         |
   | L.sort(...)            | 리스트를 정렬 (매개변수 이용가능)<br>reverse = True -> 내림차순 정렬 |
   | L.count(x)             | 리스트에서 항목 x가 몇 개 존재하는지 갯수를 반환             |
   | L.clear()              | 모든 항목 삭제                                               |
@@ -78,7 +100,7 @@
   
     ```python
     cafe = ['starbucks']
-    cafe.extend(['coffee']) # 반드시 같은 타입의 iterable을 넣어줘야함
+    cafe.extend(['coffee']) # 반드시 iterable을 넣어줘야함
     # cafe.extend('coffee')
     # print(cafe)
     # ['starbucks', 'c', 'o', 'f', 'f', 'e', 'e']
@@ -95,6 +117,10 @@
     # 원본 리스트는 변경 x, 정렬된 리스트를 return
     print(sordted(b)) # [1, 5, 10, 100]
     print(b) # [100, 10, 1, 5]
+    
+    cafe = ['abc', 'bdf']
+    cafe.insert(100, 'dd') 
+    # -> 리스트를 길이를 넘어서는 인덱스는 마지막에 아이템 추가 
     ```
     
     
@@ -122,8 +148,8 @@
   | s.copy()       | 셋의 얕은 복사본을 반환                                      |
   | s.add(x)       | 항목 x가 셋 s에 없다면 추가                                  |
   | s.pop()        | 셋 s에서 랜덤하게 항목을 반환하고, 해당 항목을 제거 <br> set이 비어 있을 경우 KeyError |
-  | s.remove(s)    | 항목 x를 셋 s에서 삭제 <br>항목이 존재하지 않을 경우, KeyError |
-  | s.discard(x)   | 항목 x가 셋 s에 있는 경우, 항목 x를 셋 s에서 삭제            |
+  | s.remove(x)    | 항목 x를 셋 s에서 삭제 <br>**항목이 존재하지 않을 경우, KeyError** |
+  | s.discard(x)   | 항목 x가 셋 s에 있는 경우, 항목 x를 셋 s에서 삭제 -> **항목이 없어도 error가 X** |
   | s.update(t)    | 셋 t에 있는 모든 항목 중 셋 s에 없는 항목을 추가             |
   | s.clear()      | 모든 항목을 제거                                             |
   | s.isdisjoint() | 셋 s가 셋 t의 서로 같은 항목을 하나라도 갖고 있지 않은 경우, True 반환 |
@@ -211,4 +237,3 @@ a = [1, 2, ['1', '2']]
 b = copy.deepcopy(a)
 ```
 
-### 
