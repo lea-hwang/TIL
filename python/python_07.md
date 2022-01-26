@@ -251,11 +251,27 @@
     MyClass.static_method(..)
     ```
 
-    
+
+- 인스턴스와 클래스 간의 이름공간(`namespace`)
+  - 클래스를 정의하면, 클래스와 해당하는 이름 공간 생성
+  - 인스턴스를 만들면, 인스턴스 객체가 생성되고 이름 공간 생성
+  - 인스턴스에서 특정 속성에 접근하면, 인스턴스-클래스 순으로 탐색
+
+
 
 ## 메소드
 
-> ㅇ
+- 인스턴스 메소드
+  - `self` 매개변수를 통해 동일한 객체에 정의된 속성 및 다른 메소드에 자유롭게 접근 가능
+  - 클래스 자체에도 접근 가능 -> **인스턴스 메소드가 클래스 상태를 수정할 수도 있음**
+- 클래스 메소드
+  - 클래스를 가리키는 `cls` 매개 변수를 받음
+  - `cls` 인자에만 접근할 수 있기 때문에 **객체 인스턴스 상태를 수정할 수 없음**
+- 스태틱 메소드
+  - 임의개수의 매개변수를 받을 수 있지만, `self`나 매개변수는 사용하지 않음
+  - 객체 상태나 클래스 상태를 수정할 수 없음
+  - 일반 함수처럼 동작하지만 클래스의 이름공간에 귀속됨
+    - 주로 해당 클래스로 한정하는 용도로 사용
 
 
 
@@ -265,16 +281,209 @@
 
 ## 추상화
 
-> 
+> 데이터나 프로세스를 의미, 수행과정이 비슷한 개념으로 묶어 정의(선언) 하는 것
+
+- dog, cat -> pet으로 묶기(추상화)
+
+
 
 ## 상속
 
-> 
+> 두 클래스 사이 부모 - 자식 관계를 정립하는 것
+
+- 클래스는 상속이 가능함
+
+  - 모든 파이썬 클래스는 object를 상속 받음
+
+  ```python
+  class ParentClass:
+      pass
+  class ChildClass(ParentClass):
+      pass
+  ```
+
+- 하위 클래스는 상위 클래스에 정의된 속성, 행동, 관계 및 제약 조건을 모두 상속 받음
+
+- 부모클래스의 속성, 메스드가 자식 클래스에 상속되므로, 코드 재사용성이 높아짐
+
+  ```python
+  class Person:
+      def __init__(self, name, age):
+          self.name = name
+          self.age = age
+      def talk(self):
+          print(f'반갑습니다. {self.name}입니다.')
+  
+  class Professor(Person):
+      def __init__(self, name, age, department):
+          self.name = name
+          self.age = age
+          self.department = department
+          
+  class Student(Person):
+      def __init__(self, name, age, gpa):
+          self.name = name
+          self.age = age
+          self.gpa = gpa
+      def talk(self):
+          print(f'안녕하세요.{self.name}입니다')
+  p1 = Person('heewon', 30)
+  p1.talk()
+  
+  p2 = Professor('j', 50, '컴공')
+  p2.talk()
+  
+  p3 = Student('dd', 20, 4.5)
+  p3. talk()
+  ```
+
+
+
+- `isinstance(object, classinfo)`
+
+  > classinfo의 instance거나 subclass*인 경우 True
+
+- `issubclass(class, classinfo)`
+
+  > class가 classinfo의 subcalss면 True
+  >
+  > classinfo는 클래스 객체의 튜플일 수 있으며, classinfo의 모든 항목을 검사
+
+  ```python
+  print(isinstance(p1, Person)) #True
+  print(isinstance(p1, Student)) #False
+  int() # -> class임
+  type(3) # -> <class 'int'>
+  ```
+
+
+
+- `super()`
+
+  > 자식클래스에서 부모클래스를 사용하고 싶은 경우
+
+  ```python
+  class Person:
+      def __init__(self, name, age):
+          self.name = name
+          self.age = age
+      def talk(self):
+          print(f'반갑습니다. {self.name}입니다.')
+  
+  class Professor(Person):
+      def __init__(self, name, age, department):
+          super().__init__(name, age)
+          self.department = department
+          
+  pp1 = Professor('bob', 55, '경영')
+  pp1.name
+  ```
+
+
+
+- 다중 상속
+
+  - 두개 이상의 클래스를 상속받는 경우
+  - 상속 받은 모든 클래스의 요소를 활용 가능함
+  - 중복된 속성이나 메서드가 있는 경우 상속 순서에 의해 결정됨
+
+  ```python
+  class Mom:
+      gene = 'XX'
+  class Dad:
+      gene = 'XY'
+  class Baby(Mom, Dad): # Mom이 먼저 상속됨
+      pass
+  baby = Baby()
+  baby.gene # XX
+  ```
+
+  
+
+- `mro` 메서드 (Method Resolution Order)
+
+  - 해당 인스턴스의 클래스가 어떤 부모 클래스를 가지는지 확인하는 메소드
+  - **기존의 인스턴스 -> 클래**스 순으로 이름 공간을 탐색하는 과정에서 상속 관계에 있으면 **인스턴스 -> 자식 클래스 -> 부모 클래스**로 확장
+
+  
 
 ## 다형성
 
-> 
+> 서로 다른 클래스에 속해있는 객체들이 **동일한 메시지에 대해 다른 방식으로 응답될 수 있음**
+
+- 메소드 오버라이딩
+
+  > 상속 받은 메소드를 재정의
+
+  - 클래스 상속 시, 부모 클래스에서 정의한 메소드를 **자식 클래스에서 변경**
+  - 부모 클래스의 메소드 이름과 기본 기능은 그대로 사용하지만, 특정 기능을 바꾸고 싶을 때 사용
+  - 상속받은 메소드를 재정의
+    - 상속받은 클래스에서 같은 이름의 메소드로 덮어씀
+    - 부모 클래스의 메소드를 실행시키고 싶을 경우 super를 활용
+
+
 
 ## 캡슐화
 
-> 
+> 객체의 일부 구현 내용에 대한 외부로부터 직접적인 액세스를 차단
+>
+> 파이썬에서 암묵적으로 존재하지만, 언어적으로는 존재하지 않음
+
+- 접근제어자
+
+  - Public Access Modifier
+
+    > 어디서나 호출 가능함
+
+    - 언더바가 없이 시작하는 메소드나 속성
+    - 하위 클래스 `override` 허용
+    - 일반적으로 작성되는 메소드와 속성의 대다수를 차지
+
+  - Protected Access Modifier
+
+    > **암묵적 규칙**에 의해 부모 클래스 내부와 자식 클래스에서만 호출 가능
+
+    - 언더바 1개(`_`)로 시작하는 메소드나 속성
+    - 하위 클래스 `override` 허용
+
+  - Private Access Modifier
+
+    > 본 클래스 내부에서만 사용이 가능
+
+    - 언더바 2개(`__`)로 시작하는 메소드나 속성
+    - 하위클래스 상속 및 호출 불가능 (**오류**)
+    - 외부 호출 불가능(**오류**)
+
+- getter 메소드와 setter 메소드
+
+  - 변수에 접근할 수 있는 메소드를 별도로 생성
+  - getter 메소드 : 변수의 값을 읽는 메소드
+    - `@property` 데코레이터 사용
+  - setter 메소드: 변수의 값을 설정하는 성격의 메소드
+    - 메소드를 속성으로 변경한다고 생각하면 됨
+    - `@변수.setter` 사용
+
+  ```python
+  def Person:
+      def __init__(self, name, age):
+          self.name = name
+          self._age = age
+      
+      @property
+      def age(self):
+          return self._age
+      
+      @age.setter
+      def age(self):
+          self._age = self._age - 10
+  
+  p1 = Person(20)
+  print(p1.age) # 20
+  
+  p1.age = 33
+  print(p1.age) # 23
+  ```
+
+  
+
+​	

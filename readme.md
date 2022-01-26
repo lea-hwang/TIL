@@ -2,8 +2,9 @@
 
 ### 2022.01.26
 
-- [ ] 오늘 내용 정리
-  - [ ] [python_07](python/python_07.md)
+- [x] 파이썬 정리
+  - [x] [python_07](python/python_07.md)
+  - [x] [python_04](python/python_04.md)
 - [ ] 정처기 공부
 - [ ] 
 
