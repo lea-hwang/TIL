@@ -66,7 +66,7 @@
     # print(' '.join(numbers2))
     # ->이렇게 하면 에러
     
-    print(' '.join(map(str),numbers))
+    print(' '.join(map(str,numbers)))
     
     # 문자열 메서드 모두 확인하기
     print(dir('string'))
@@ -115,7 +115,7 @@
     
     # 2. 함수 (sorted)
     # 원본 리스트는 변경 x, 정렬된 리스트를 return
-    print(sordted(b)) # [1, 5, 10, 100]
+    print(sorted(b)) # [1, 5, 10, 100]
     print(b) # [100, 10, 1, 5]
     
     cafe = ['abc', 'bdf']
