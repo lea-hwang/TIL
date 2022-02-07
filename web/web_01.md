@@ -4,12 +4,16 @@
 
 > Hyper Text Markup Language
 
-- Hyper Text: 참조(하이퍼링크)를 통해 사용자가 한 문서에서 다른 문서로 즉시 접근할 수 있는 텍스트
+- `Hyper Text`: 참조(하이퍼링크)를 통해 사용자가 한 문서에서 다른 문서로 즉시 접근할 수 있는 텍스트
 
-- Markup Language: 태그 등을 이용하여 문서나 데이터의 구조를 명시하는 언어
+- `Markup Language`: 태그 등을 이용하여 문서나 데이터의 구조를 명시하는 언어
   - 대표적인 예 - HTML, Markdown
 
 -> **웹 페이지를 작성(구조화)하기 위한 언어**
+
+- 현재 웹 표준
+  - W3C(HTML5), WHATWG(HTML Living Standard)
+  - 현재는 WHATWG 가 좀 더 주도적
 
 ### HTML 기본구조
 
@@ -27,13 +31,13 @@
   ```html
   <!DOCTYPE html> -> 해당 문서가 html5로 구성되어 있음(구버젼 브라우져를 위해 작성)
   <html lang="ko"> -> 기본값 en
-    <head>
-      <meta charset="UTF-8">
-      <title>Document</title>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
+  <body>
       
-    </body>
+  </body>
   </html>
   ```
 
@@ -43,9 +47,9 @@
 
   - `<meta>`: 문서 레벨 메타데이터 요소
 
-  - `<link>`: 외부 리소스 연결 요소(CSS 파일, favicon 등)
+  - `<link>`: 외부 리소스 연결 요소(**CSS** 파일, favicon 등)
 
-  - `<script>`: 스크립트 요소(JavaScript 파일/코드)
+  - `<script>`: 스크립트 요소(**JavaScript** 파일/코드)
 
   - `<style>`: CSS 직접 작성
 
@@ -56,7 +60,7 @@
       <link href="style.css" rel="stylesheet">
       <script src="javascript.js"></script>
       <style>
-        p{
+        p {
           color: black;
         }
       </style>
@@ -67,7 +71,7 @@
 
   > 메타 데이터를 표현하는 새로운 규약
 
-  - html 문서의 메타 데이터를 통해 문서의 정보를 전달
+  - HTML 문서의 메타 데이터를 통해 문서의 정보를 전달
   - 메타정보에 해당하는 제목, 설명 등을 쓸 수 있도록 정의
 
 - DOM(Document Object Model) 트리
@@ -88,30 +92,30 @@
     </body>
     ```
 
-- 요소(element)
-
-  `<h1>contents</h1>`
+- 요소(`element`)
 
   > HTML의 요소는 태그와 내용(contents)로 구성되어 있다.
 
-  - HTML 요소는 시작 태그와 종료 태그 그리고 태그 사이에 위치한 내용으로 구성
+  `<h1>contents</h1>`
+
+  - HTML 요소는 **시작 태그**와 **종료 태그** 그리고 태그 사이에 위치한 **내용**으로 구성
     - 태그(Element, 요소)는 컨텐츠(내용)를 감싸는 것으로 그 정보의 성격과 의미를 정의
   - 내용이 없는 태그들
     - `br`, `hr`, `img`, `input`, `link`, `meta`
-  - 요소는 중접(nested)될 수 있음
+  - 요소는 중첩(nested)될 수 있음
     - 요소의 중접을 통해 하나의 문서를 구조화
     - 여는 태그와 닫는 태그의 쌍을 잘 확인해야함
-      - 오류를 반환하는 것이 아닌 그냥 레이아웃이 깨진 상태로 출력되기 때문에, 디버깅이 힘들어질 수 있음
+      - **오류를 반환하는 것이 아닌** 그냥 레이아웃이 깨진 상태로 출력되기 때문에, 디버깅이 힘들어질 수 있음
 
-- 속성(attribute)
-
-  `<a href="https://google.com"></a>`
+- 속성(`attribute`)
 
   > 속성명="속성값"
   >
   > 공백 X, 쌍따옴표 사용
   >
   > Tag 별로 사용가능한 속성은 다르다
+
+  `<a href="https://google.com"></a>`
 
   - 속성을 통해 **태그의 부가적인 정보**를 설정할 수 있음
   - 요소는 속성을 가질 수 있으며, 경로나 크기와 같은 추가적인 정보를 제공
@@ -133,7 +137,7 @@
 
   > 중요!!!!!!
 
-  - HTML5에서 의미론적 요소를 담은 태그의 등장
+  - HTML5에서 **의미론적 요소**를 담은 태그의 등장
 
     - 기존 영역을 의미하는 div 태그를 대체하여 사용
 
@@ -153,7 +157,7 @@
 
       ```html
       <header>
-          <nav></nav>
+        <nav></nav>
       </header>
       <section>
         <article></article>
@@ -173,12 +177,15 @@
 ### HTML 문서 구조화
 
 - 인라인 / 블록 요소
+  - 인라인 : 현재 혹은 자식 요소의 가로를 차지
+  - 블록 : 부모 요소의 가로 전체를 차지
+
 - 텍스트 요소
 
 | 태그                             | 설명                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | `<a></a>`                        | `href` 속성을 활용하여 다른 URL로 연결하는 하이퍼링크 생성   |
-| `<b></b>`<br>`<strong></strong>` | 굵은 글씨 요소<br>중요한 강조하고자 하는 요소(보통 굵은 기울임 글시로 표현) |
+| `<b></b>`<br>`<strong></strong>` | 굵은 글씨 요소<br>중요한 강조하고자 하는 요소(보통 굵은 글씨로 표현) |
 | `<i></i>`<br>`<em></em>`         | 기울임 글씨 요소<br>중요한 강조하고자 하는 요소(보통 기울임 글씨로 표현) |
 | `<br>`                           | 텍스트 내에 줄 바꿈 생성                                     |
 | `<img>`                          | `src` 속성을 활용하여 이미지 표현                            |
@@ -193,19 +200,19 @@
   | `<p></p>`                   | 하나의 문단(paragraph)                                       |
   | `<hr>`                      | 문단 레벨 요소에서의 주제의 분리를 의미하며 수평선으로 표현됨(A Horizontal Rule) |
   | `<ol></ol>`<br>`<ul></ul>`  | 순서가 있는 리스트(ordered)<br>순서가 없는 리스트(unordered) |
-  | `<pre>`                     | HTML에 작성한 내용을 그대로 표현 보통 고정폭 글꼴이 사용되고 공백문자를 유지 |
-  | `<blockquote></blockquote>` | 텍스트가 긴 인용문 주로 들여쓰기 한 것으로 표현됨            |
+  | `<pre></pre>`               | HTML에 작성한 내용을 그대로 표현 보통 고정폭 글꼴이 사용되고 공백문자를 유지 |
+  | `<blockquote></blockquote>` | 텍스트가 긴 인용문. 주로 들여쓰기 한 것으로 표현됨           |
   | `<div></div>`               | 의미 없는 블록 레벨 컨테이너                                 |
 
-- table
+- `table`
 
   - table의 각 영역을 명시하기 위해 `<thead>` `<tbody>` `<tfoot>` 요소를 활용
 
-  - `<tr>` 가로줄
+  - `<tr>`: 가로줄
 
-  - `<th>` thead 부분의 각각의 칸
+  - `<th>`: thead 부분의 각각의 칸
 
-  - `<td> ` tbody 부분의 각각의 칸
+  - `<td> `: tbody 부분의 각각의 칸
 
   - `colspan`(가로로 병합), `rowspan`(세로로 병합) 속성을 활용해서 셀 병합
 
@@ -244,7 +251,7 @@
     </body>
     ```
 
-- form
+- `form`
 
   - `<form>`은 **정보(데이터)를 서버에 제출**하기 위한 영역
   - `<form>` 기본 속성
@@ -255,7 +262,7 @@
       - `multipart/form-data` : 파일 전송시 (input type이 file인 경우 (주로 **이미지, 비디오, 파일**))
       - `text/plain`: HTML 5 디버깅 용(잘 사용되지 않음)
 
-- input
+- `input`
 
   - 다양한 타입을 가지는 입력 데이터 유형과 위젯이 제공됨
 
