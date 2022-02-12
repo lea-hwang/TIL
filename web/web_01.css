@@ -1,0 +1,54 @@
+h1 {
+  color: darkblue;
+  font-size: 30px;
+}
+
+div p {
+  color: red;
+} /* 띄어쓰기로 자손을 표현 */
+
+div > p {
+  color: blue;
+} /* >(우측 꺽쇠)로 자식을 표현 */
+
+div ~ span {
+  color: purple;
+}
+
+div + span {
+  color: yellow;
+}
+
+.display-none {
+  display: none;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.block{
+  border: 1px solid;
+  height: 100px;
+  width: 100px;
+}
+
+.relative {
+  position: relative;
+  background-color: aquamarine;
+  top: 100px;
+  left: 100px;
+}
+
+.absolute {
+  position: absolute;
+  background-color: blue;
+  top: 100px;
+  left: 100px;
+}
+
+.fixed {
+  position: fixed;
+  top: 200px;
+  left: 200px;
+}
