@@ -14,7 +14,7 @@
    $ git config --global user.email {유저이메일}
    $ git config --global user.name {유저이름}
    
-   $ git config -- global -l       // 설정 값을 확인하는 명령어
+   $ git config --global -l       // 설정 값을 확인하는 명령어
    ```
 
 
