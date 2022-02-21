@@ -1,36 +1,27 @@
 import sys
-sys.stdin = open('2304.txt', 'r')
+sys.stdin = open('2304_input.txt', 'r')
 
-# 기둥의 개수
-N = int(input())
-# 기둥의 높이 리스트
-pillars = []
+N = int(input()) # 기둥의 개수
+pillars = [0] * N # 기둥의 위치, 높이 리스트
+
 # 기둥 입력 받기
-for _ in range(N):
-    pillars.append(tuple(map(int, input().split())))
-# 기둥의 위치를 기준으로 정렬
+for i in range(N):
+    pillars[i] = tuple(map(int, input().split()))
+# 위치를 기준으로 정렬
 pillars.sort(key=lambda x: x[0])
-# 오른쪽에 있는 기둥이 나보다 클 때, pop
-i = 1
-while i < N:
-    for j in range(i, N):
-        if pillars[i][1] < pillars[j][1]:
-            pillars.pop(i)
-            N -= 1
-            break
+
+# 최대값이 있는 인덱스를 찾는다.
+midx = 0
+for i in range(N):
+    if pillars[i][1] > pillars[midx][1]:
+        midx = i
+
+area = 0
+for i in range(N):
+    if i == midx: # 최댓값에 도달했을때 다음 최댓값을 찾는다
+        pass
     else:
-        i += 1
+        pass
+
 print(pillars)
-# 전체 면적, 첫번째 기둥으로 초기화
-area = pillars[0][1]
-for j in range(1, N):
-    # 왼쪽 기둥이 더 낮을 때
-    if pillars[j][1] > pillars[j - 1][1]:
-        # 왼쪽 기둥과 오른쪽 기둥 사이
-        area += pillars[j - 1][1] * (pillars[j][0] - pillars[j - 1][0] - 1)
-        # 오른쪽 기둥
-        area += pillars[j][1]
-    # 왼쪽 기둥이 더 높을 때
-    else:
-        area += pillars[j][1] * (pillars[j][0] - pillars[j - 1][0])
-print(area)
+

@@ -1,4 +1,4 @@
-def countingsort(A, B, N):
+def counting_sort(A, B, N):
     counts = [0] * (N+1)
     for num in A: # 각 숫자 개수 구하기
         counts[num] += 1
@@ -11,5 +11,5 @@ def countingsort(A, B, N):
 
 A = [0, 4, 1, 3, 2, 4, 1]
 B = [0, 0, 0, 0, 0, 0, 0]
-countingsort(A, B, 5)
+counting_sort(A, B, 5)
 print(B)
