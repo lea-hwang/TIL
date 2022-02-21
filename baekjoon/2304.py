@@ -11,17 +11,36 @@ for i in range(N):
 pillars.sort(key=lambda x: x[0])
 
 # 최대값이 있는 인덱스를 찾는다.
-midx = 0
+max_idx = 0
 for i in range(N):
-    if pillars[i][1] > pillars[midx][1]:
-        midx = i
+    if pillars[i][1] >= pillars[max_idx][1]:
+        max_idx = i
 
 area = 0
-for i in range(N):
-    if i == midx: # 최댓값에 도달했을때 다음 최댓값을 찾는다
-        pass
-    else:
-        pass
 
-print(pillars)
+# max 전까지 앞에서 부터 접근
+cur_idx = 0 # 현재 기둥의 idx
+for next_idx in range(1, max_idx + 1): # 다음 기둥의 idx
+    cur_height = pillars[cur_idx][1]
+    next_height = pillars[next_idx][1]
 
+    if cur_height < next_height: # 현재 기둥이 작을 때
+        area += cur_height * (pillars[next_idx][0] - pillars[cur_idx][0])
+        cur_idx = next_idx
+
+    elif cur_height ==  next_height: # 현재 기둥과 같을 때
+        area += cur_height * (pillars[next_idx][0] - pillars[cur_idx][0])
+        cur_idx = next_idx
+
+# max 기둥 더해주기
+area += pillars[max_idx][1]
+
+# max 이후부터 뒤에서 부터 접근
+cur_idx = N-1
+for next_idx in range(N-2, max_idx-1, -1):
+    cur_height = pillars[cur_idx][1]
+    next_height = pillars[next_idx][1]
+    if cur_height < next_height:  # 현재 기둥이 작을 때
+        area += cur_height * (pillars[cur_idx][0] - pillars[next_idx][0])
+        cur_idx = next_idx
+print(area)
