@@ -27,7 +27,13 @@
 
 - 값이 **할당되지 않은** 상태를 의미
 
+### Array
 
+- 특정한 값들을 하나의 배열 안에 담아둔 상태를 의미
+
+### Object
+
+- 여러 속성을 내포하고 있는 자료형
 
 
 
@@ -43,11 +49,11 @@
 const a = 5;
 const b = 7;
 const myName = 'heewon'; //camel case
-const isGood = true;
+const isGood = true; // boolean
 const hey;
 
-console.log(a + b);
-console.log(hey);
+console.log(a + b); // 12
+console.log(hey); // undefined
 ```
 
 
@@ -59,11 +65,17 @@ console.log(hey);
 - `let <변수명> = <값>`
 
 ```javascript
-let money = 10000;
+let money = 10000;	// integer
+let names = ["John", "Leo", "Jackson", "Atom"]; // Array
+let player = {
+  name: "heewon",
+  points: 10,
+};
 
 money = 5000;
 
-console.log(money);
+console.log(money); // 5000
+console.log(names[2]); // Jackson
 ```
 
 > var이라는 변수가 있지만, 바뀌는 변수인지 아닌지 의미를 파악할 수 없게 만들어 코드의 가독성을 떨어뜨림 -> 사용하지 않음
