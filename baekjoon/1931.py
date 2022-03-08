@@ -33,28 +33,3 @@ print(top)
 
 meets = [list(map(int, input().split())) for _ in range(N)]
 
-def binary_tree(N):
-    top = 0
-    stack = [0]
-    while True:
-        curr = stack.pop()
-        
-
-
-    if top < sum(visit):
-        top = sum(visit)
-    if i == N:
-        return
-
-    start, end = meetings[i][0], meetings[i][1]
-    for j in range(i):
-        if visit[j]: # 이전 회의가 잡혀있을 때
-            if not (start >= meetings[j][1] or end <= meetings[j][0]): # 이전 회의와 겹치는 경우
-                break
-    else:
-        visit[i] = 1
-        binary_tree(i + 1, N)
-    visit[i] = 0
-    binary_tree(i + 1, N)
-
-
