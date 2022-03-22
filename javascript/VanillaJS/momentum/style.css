@@ -1,3 +1,12 @@
 body {
   background-color: beige;
 }
+/* 3-7 */
+h1 {
+  color: blueviolet;
+  transition: color 0.5s ease-in-out;
+}
+
+.active {
+  color: tomato;
+}

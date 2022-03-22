@@ -62,8 +62,8 @@
 //   },
 // }
 
-// console.log(player.name)
-// player.sayHello("Lea")
+// console.log(player.name);
+// player.sayHello("Lea");
 
 // 2-9,10 recap
 // const a = 5; // 변경할 수 없는 변수
@@ -148,14 +148,14 @@
 //   console.log("you are also good");
 // }
 
-// 3-1
+// 3-0
 
 // document //html을 자바스크립트 관점에서 볼 수 있음. html에서 작성된 부분을 자바스크립트에서 받아서 사용할 수 있음
 // console.log(document.title)
 // document.title = "Hi";
 // document.body;
 
-// // 3-2
+// // 3-1
 // const title = document.getElementById("title");
 // console.dir(title);
 
@@ -164,10 +164,84 @@
 // console.log(title.id);
 // console.log(title.className); // Html의 element를 가져올 수 있음.
 
-// 3-3
+// 3-2
+// const Hellos = document.getElementsByClassName("hello");
+// console.log(Hellos);
 
-const Hellos = document.getElementsByClassName("hello");
-console.log(Hellos);
+// const title = document.querySelector(".hello hi"); // selector
+// const titles = document.querySelectorAll(".hello hi"); // selector
 
-const title = document.querySelector(".hello hi"); // selector
-const titles = document.querySelectorAll(".hello hi"); // selector
+// // 3-3, 4, 5
+// const title = document.querySelector(".hello");
+
+// function handleTitleClick(){
+//   title.style.color = "blue";
+// }
+
+// function handleMouseEnter(){
+//   title.innerText = "mouse is here.";
+// }
+
+// function handleMouseLeave(){
+//   title.innerText = "mouse is gone.";
+// }
+
+// function handleWindowResize(){
+//   document.body.style.backgroundColor = "yellow"; // title, body 와 같은 특정 태그만 document.body로 접근할 수 있음
+// }
+
+// function handleWindowCopy(){
+//   alert("copier!");
+// }
+
+// function handleWindowOffline(){
+//   alert("no WIFI");
+// }
+
+// function handleWindowOnline(){
+//   alert("all good");
+// }
+
+// title.addEventListener("click", handleTitleClick); // 클릭이라는 이벤트가 실행됐을 때, handleTitleClick이라는 함수가 실행된다.
+// title.addEventListener("mouseenter", handleMouseEnter); // 마우스를 해당 객체 위에 뒀을 경우 실행됨
+// title.addEventListener("mouseleave", handleMouseLeave); // 마우스를 해당 객체를 벗어나서 뒀을 경우 실행됨
+
+// // 이렇게 표현도 가능
+// title.onclick =  handleTitleClick;
+// title.onmouseenter =  handleMouseEnter;
+
+// window.addEventListener("resize", handleWindowResize); // 창 크기를 변환시키려고 했을 때 실행
+// window.addEventListener("copy", handleWindowCopy); // 복사하려고 했을 때 실행
+// window.addEventListener("offline", handleWindowOffline); // 와이파이가 해제되었을 때 실행
+// window.addEventListener("online", handleWindowOnline); // 와이파이가 연결되었을 때 실행
+
+// 3-6
+// const h1 = document.querySelector("h1");
+
+// function handleTitleClick(){
+  //   const currentColor = h1.style.color;
+//   let newColor;
+//   if (currentColor === "blue"){
+//     newColor = "red";
+//   } else {
+//     newColor = "blue";
+//   }
+//   h1.style.color = newColor;
+// }
+
+// title.addEventListener("click", handleTitleClick);
+
+//3-7
+const h1 = document.querySelector("h1");
+
+function handleTitleClick() {
+  // const clickedClass = "active";
+  // if (h1.classList.contains(clickedClass)) {
+  //   h1.classList.remove(clickedClass);
+  // } else {
+  //   h1.classList.add(clickedClass);
+  // }
+  h1.classList.toggle("active");
+}
+
+h1.addEventListener("click", handleTitleClick);
