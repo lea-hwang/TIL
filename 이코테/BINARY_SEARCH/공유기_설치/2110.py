@@ -20,7 +20,7 @@ def yes_I_can(distance): # 해당 길이로 공유기를 모두 설치할 수 �
 
 def binary_search():
     global left, right
-    start, end = 0, right-left        # 이진탐색 하한, 상한
+    start, end = 1, right-left      # 이진탐색 하한, 상한
 
     max_d = 0                       # 최소 거리의 최댓값
     while start <= end:
@@ -33,10 +33,11 @@ def binary_search():
     return max_d
 
 
-N, C = map(int, sys.stdin.readline().rstrip().split())                # 집의 개수, 공유기 개수
-houses = [int(input()) for i in range(N)]       # 집의 좌표
+# 입력
+N, C = map(int, sys.stdin.readline().rstrip().split())          # 집의 개수, 공유기 개수
+houses = [int(sys.stdin.readline().rstrip()) for i in range(N)]                       # 집의 좌표
 
-houses.sort()                                   # 집의 위치 오름차순 정렬
+houses.sort()                                                   # 집의 위치 오름차순 정렬
 
 left, right = houses[0], houses[-1]
 
