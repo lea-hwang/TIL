@@ -2,36 +2,46 @@ import sys
 sys.stdin = open('18111_input.txt', 'r')
 
 N, M, B = map(int, input().split())
-ground = []
+ground = [0] * 257
 
 for _ in range(N):
-    ground += list(map(int, input().split()))
+    input_data = list(map(int, input().split()))
+    for k in input_data:
+        ground[k] += 1
 
-max_ground = max(ground)
-min_ground = min(ground)
+for i in range(257):
+    if ground[i]:
+        min_idx = i
+        break
+for i in range(256, -1, -1):
+    if ground[i]:
+        max_idx = i
+        break
 
-time = [0] * (max_ground - min_ground + 1)
+time = 0
+while max_idx - min_idx > 1:
+    # 만약 수중에 블록이 있다면 min_idx에 블록을 채우고
+    if B >= ground[min_idx] and ground[min_idx] <= ground[max_idx] * 2:
+        ground[min_idx+1] += ground[min_idx]
+        B -= ground[min_idx]
+        time += ground[min_idx]
+        min_idx += 1
+    # 수중에 블록이 없다면 max_idx에서 블록을 제거한다.
+    else:
+        ground[max_idx-1] += ground[max_idx]
+        time += 2 * ground[max_idx]
+        B += ground[max_idx]
+        max_idx -= 1
 
-ground.sort(reverse=True) # 블록 제거를 먼저할 수 있도록 유도(블록 인벤토리 저장)
+# 채워야하는 시간과 삭제하는 시간을 비교해서 둘 중 더 작은 시간을 택한다.
+if min_idx != max_idx:
+    if B >= ground[min_idx] and ground[min_idx] <= ground[max_idx] * 2:
+        height = max_idx
+        time += ground[min_idx]
+    else:
+        height = min_idx
+        time += ground[max_idx] * 2
+else:
+    height = min_idx
+print(time, height)
 
-
-# min ~ max 높이마다 얼마만큼의 시간이 걸리는지 체크
-for i in range(max_ground - min_ground + 1):
-    block = B
-    height = min_ground + i
-    for g in ground:
-        if height > g: # 블록 제거
-            block += height - g
-            time[i] += 2 * (height - g)
-        else:  # 블록 생성
-            if block:
-                block -= g - height
-                time[i] += (g - height)
-            else:
-                time[i] = 256 * M * N * 2
-                break
-
-
-print(time)
-min_time = min(time)
-print(min_time, min_ground + time.index(min_time))
