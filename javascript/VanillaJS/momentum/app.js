@@ -151,11 +151,13 @@
 // 3-0
 
 // document //html을 자바스크립트 관점에서 볼 수 있음. html에서 작성된 부분을 자바스크립트에서 받아서 사용할 수 있음
-// console.log(document.title)
+// console.log(document)
+// // console.log(document.title)
 // document.title = "Hi";
 // document.body;
+// console.log(document.h1);
 
-// // 3-1
+// // // 3-1
 // const title = document.getElementById("title");
 // console.dir(title);
 
@@ -171,7 +173,7 @@
 // const title = document.querySelector(".hello hi"); // selector
 // const titles = document.querySelectorAll(".hello hi"); // selector
 
-// // 3-3, 4, 5
+// 3-3, 4, 5
 // const title = document.querySelector(".hello");
 
 // function handleTitleClick(){
@@ -219,7 +221,7 @@
 // const h1 = document.querySelector("h1");
 
 // function handleTitleClick(){
-  //   const currentColor = h1.style.color;
+//   const currentColor = h1.style.color;
 //   let newColor;
 //   if (currentColor === "blue"){
 //     newColor = "red";
@@ -235,12 +237,14 @@
 const h1 = document.querySelector("h1");
 
 function handleTitleClick() {
-  // const clickedClass = "active";
+  const clickedClass = "active";
+  
   // if (h1.classList.contains(clickedClass)) {
   //   h1.classList.remove(clickedClass);
   // } else {
   //   h1.classList.add(clickedClass);
   // }
+  // console.log(h1.classList.contains("active"))
   h1.classList.toggle("active");
 }
 
