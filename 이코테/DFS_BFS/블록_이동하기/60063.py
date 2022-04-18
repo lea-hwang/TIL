@@ -9,8 +9,8 @@
 from collections import deque
 from pprint import pprint
 # board = []
-board = [[0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 1, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
+# board = [[0, 0, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 0, 0, 0, 0], [1, 0, 0, 0, 1, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 1, 0, 1], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+board = [[0, 0, 0, 1, 1],[0, 0, 0, 1, 0],[0, 1, 0, 1, 1],[1, 1, 0, 0, 1],[0, 0, 0, 0, 0]]
 
 N = 0
 visited = []
@@ -88,18 +88,21 @@ def solution(b):
     # board = b
     N = len(board)
     si, sj, sd = 0, 1, 3  # 시작점
+    min_val = N * N
 
-    queue = deque()
-    queue.append((si, sj, sd))
+    # queue = deque()
+    # queue.append((si, sj, sd))
+    stack = [(si, sj, sd)]
     visited = [[0] * N for _ in range(N)]
     visited[0][1] = 1
     visited[0][0] = 1
 
-    while queue:
-        i, j, d = queue.popleft()
+    while stack:
+        i, j, d = stack.pop()
         if i == N-1 and j == N-1:
-            return visited[i][j] - 1
-        queue.extend(next_position(i, j, d))
+            min_val = min(min_val, visited[i][j] - 1)
+        stack.extend(next_position(i, j, d))
+    return min_val
 
 
 
