@@ -1,5 +1,9 @@
 # 🌱TIL (Today I Learned)
 
+### 2022.05.03
+
+- [x] javascript music search app 만들기
+
 ### 2022.05.02
 
 - [x] 다익스트라 공부
