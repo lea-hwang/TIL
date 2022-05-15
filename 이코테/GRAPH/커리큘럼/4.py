@@ -7,26 +7,27 @@ import sys
 from collections import deque
 sys.stdin = open('input.txt', 'r')
 
-N = int(input())                # 강의수
-pre_lec = [0] * N               # 선이수 과목 수(진입차수)
-time = [0] * N                  # 강의 시간
-graph = [[] for i in range(N)]  # 각 강의의 선이수 과목
-total_time = [0] * N            # 선이수 과목을 포함한 총 수강 시간
+N = int(input())                    # 강의수
+pre_lec = [0] * (N+1)               # 선이수 과목 수(진입차수)
+time = [0] * (N+1)                  # 강의 시간
+graph = [[] for i in range(N+1)]    # 각 강의의 다음 과목
+total_time = [0] * (N+1)            # 선이수 과목을 포함한 총 수강 시간
 
 
 # 각 강의의 강의 시간, 각 강의를 듣기 위해 먼저들어야하는 강의번호
-for i in range(N):
+for i in range(1, N+1):
     input_data = sys.stdin.readline().split()
-    time[i] = input_data[0]
-    # 각 강의의 선이수 과목 저장
+    time[i] = int(input_data[0])
+    total_time[i] = int(input_data[0])
+    # 각 강의의 다음 과목 저장
     for lec in input_data[1:-1]:
-        graph[i].append(lec)
+        graph[int(lec)].append(i)
         # 진입차수 += 1
         pre_lec[i] += 1
 
 queue = deque()
 
-for i in range(N):
+for i in range(1, N+1):
     # 선이수 과목이 없는 과목 찾기
     if pre_lec[i] == 0:
         queue.append(i)
@@ -38,6 +39,12 @@ while queue:
     for nxt in graph[v]: # nxt는 다음 이수 과목
         # 더 오래 걸리는 시간으로 바꾸기
         total_time[nxt] = max(total_time[nxt], total_time[v] + time[nxt])
+        # 선이수 과목 수 -= 1
         pre_lec[nxt] -= 1
+        if pre_lec[nxt] == 0:
+            queue.append(nxt)
+
+for i in range(1, N+1):
+    print(total_time[i])
 
 

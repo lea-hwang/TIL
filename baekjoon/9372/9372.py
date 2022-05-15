@@ -1,16 +1,39 @@
 import sys
 sys.stdin = open('9372_input.txt', 'r')
 
+
+def find_root(a):
+    first = a
+    while a != parent[a]:
+        a = parent[a]
+    parent[first] = a
+    return parent[a]
+
+
+def union(a, b):
+    x = find_root(a)
+    y = find_root(b)
+    if x < y :
+        parent[y] = x
+    else:
+        parent[x] = y
+
+
 T = int(input())
-for tc in range(1, T+1):
-    N, M = map(int, input()) # 국가의 수, 비행기 종류
-    airplanes = [[0] * (N + 1) for _ in range(N + 1)]
+
+for test in range(T):
+    N, M = map(int, input().split())     # 국가의 수, 비행기 종류
+    parent = [i for i in range(N + 1)]
+
+    cnt = 0
+    # 비행기 정보
     for _ in range(M):
-        a, b = map(int, input().split())
-        airplanes[a][b] = 1
-        airplanes[b][a] = 1
+        start, end = map(int, sys.stdin.readline().split())
+        if find_root(start) != find_root(end):
+            union(start, end)
+            cnt += 1
+
+    print(cnt)
 
 
-
-
-    print(f'#{tc} ')
+    print(parent)
