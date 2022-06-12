@@ -7,6 +7,26 @@
 # 기둥은 바닥 위에 있거나 보의 한쪽 끝 부분 위에 있거나, 또는 다른 기둥 위에 있어야 함
 # 보는 한쪽 끝 부분이 기둥 위에 있거나, 또는 양쪽 끝 부분이 다른 보와 동시에 연결되어 있어야 함
 
+def check(x, y, a, answer):
+    if a == 0:  # 기둥
+        # 바닥 위에 있거나
+        if y == 0:
+            return True
+        # 보의 한쪽 끝 부분 위에 있거나
+        elif [x, y, 1] in answer or [x - 1, y, 1] in answer:
+            return True
+        # 다른 기둥 위에 있거나
+        elif [x, y - 1, 0] in answer:
+            return True
+    else:  # 보
+        # 한쪽 끝 부분이 기둥 위에 있거나
+        if [x, y - 1, 0] in answer or [x + 1, y - 1, 0] in answer:
+            return True
+        # 양쪽 끝 부분이 다른 보와 동시에 연결되어 있어야 함
+        elif [x - 1, y, 1] in answer and [x + 1, y, 1] in answer:
+            return True
+    return False
+
 
 def solution(n, build_frame):
     answer = []
@@ -14,25 +34,14 @@ def solution(n, build_frame):
 
     for x, y, a, b in build_frame:
         if b == 1: # 설치
-            if a == 0: # 기둥
-                # 바닥 위에 있거나
-                if y == 0:
-                    answer.append((x, y, 0))
-                # 보의 한쪽 끝 부분 위에 있거나
-                elif (x, y, 1) in answer or (x-1, y, 1) in answer:
-                    answer.append((x, y, 0))
-                # 다른 기둥 위에 있거나
-                elif (x, y-1, 0) in answer:
-                    answer.append((x, y, 0))
-            else: # 보
-                # 한쪽 끝 부분이 기둥 위에 있거나
-                if (x, y-1, 0) in answer or (x+1, y-1, 0) in answer:
-                    answer.append((x, y, 1))
-                # 양쪽 끝 부분이 다른 보와 동시에 연결되어 있어야 함
-                elif (x-1, y, 1) in answer or (x+1, y, 1) in answer:
-                    answer.append((x, y, 1))
+            if check(x, y, a, answer):
+                answer.append([x, y, a])
         else: # 삭제
-            pass
+            answer.remove([x, y, a])
+            for x2, y2, a2 in answer:
+                if not check(x2, y2, a2, answer):
+                    answer.append([x, y, a])
+                    break
     answer.sort()
     return answer
 
