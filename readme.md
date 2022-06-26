@@ -1,10 +1,10 @@
 # 🌱TIL (Today I Learned)
 
-  ### 2022.06.26
-- [x] [파이썬 문제 풀기 / SWEA 1952](C:\Users\heewon\ssafy7\TIL\SWEA\1952)
+### 2022.06.26
+- [x] [파이썬 문제 풀기 / SWEA 1952](./SWEA/1952)
 
 ### 2022.06.25
-- [x] [파이썬 문제 풀기/ SWEA 1767](C:\Users\heewon\ssafy7\TIL\SWEA\1767)
+- [x] [파이썬 문제 풀기/ SWEA 1767](./SWEA/1767)
 
 ### 2022.06.23
 - [x] 리액트 공부 시작
