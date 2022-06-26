@@ -1,5 +1,8 @@
 # 🌱TIL (Today I Learned)
 
+<details>
+<summary>2022.01 ~ 2022.06</summary>
+<div markdown="1">
 ### 2022.06.26
 - [x] [파이썬 문제 풀기 / SWEA 1952](./SWEA/1952)
 
@@ -561,3 +564,6 @@
 - [x] [CLI](startcamp/CLI.md)
 - [x] [Markdown](startcamp/markdown.md)
 - [x] [Git](startcamp/git.md)
+
+</div>
+</details>
