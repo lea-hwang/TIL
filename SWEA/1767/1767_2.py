@@ -29,6 +29,7 @@ sys.stdin = open('1767_input.txt', 'r')
 input = sys.stdin.readline
 T = int(input()) # 테스트 케이스 수
 
+# 전역변수 설정
 mat = []
 cores = []
 N = 0
@@ -65,12 +66,12 @@ def core_connection(i, j, di, dj):
 
 # i, j에 위치한 코어 연결 해제
 def core_disconnection(i, j, di, dj):
-    ni, nj = i + di, j + dj
+    ni, nj = i, j
     while True:
+        ni += di
+        nj += dj
         if 0 <= ni < N and 0 <= nj < N:
             mat[ni][nj] = 0
-            ni += di
-            nj += dj
         # 인덱스를 벗어났을 때
         else:
             return
@@ -108,6 +109,7 @@ for tc in range(1, T+1):
     # 1. 입력값 받기
     N = int(input()) # 멕시노스의 크기 N * N
     mat = [list(map(int, input().split())) for _ in range(N)] # N*N 멕시노스
+
     core_line = [0, 0]  # 최대 코어 수, 최소 라인 길이
     cores = [] # 코어 위치 정보
 
@@ -120,7 +122,7 @@ for tc in range(1, T+1):
                 else:
                     cores.append((i, j)) # 코어의 위치 저장
     C = len(cores) # 전체 코어의 수
-    
+
     # 3. 해 찾기
     solution(0, core_line[0], 0)
 
