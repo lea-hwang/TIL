@@ -3,10 +3,17 @@
 <details>
 <summary>2022.01 ~ 2022.06</summary>
 <div markdown="1">
+### 2022.06.30
+
+
+- [x] [노마드코더 타입스크립트 day 4](./typescript/노마드코더/Day4.md)
+- [x] [생활코딩 React](./react/생활코딩)
+
 ### 2022.06.29
 
+
 - [x] [노마드코더 타입스크립트 day 3](./typescript/노마드코더/Day3.md)
-- [ ] [생활코딩 React](./react/생활코딩)
+- [x] [생활코딩 React](./react/생활코딩)
 
 ### 2022.06.28
 
