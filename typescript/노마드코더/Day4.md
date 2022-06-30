@@ -34,3 +34,61 @@ const c = superPrint(["a", "b", "c"])
 const d = superPrint(["a", 1, true])
 ```
 
+
+
+```typescript
+function superPrint<T>(a: T[]){
+  return a[0]
+}
+// extraInfo : object, string 뭐든 될 수 있음
+type Player<E> = {
+    name:string
+    extraInfo:E
+}
+
+type NicoExtra = {
+    favFood:string
+}
+type NicoPlayer = Player<NicoExtra>
+
+const nico: NicoPlayer = {
+    name:"nico",
+    extraInfo: {
+        favFood:"kimchi"
+    }
+}
+
+const lynn: Player<null> = {
+    name: "lynn",
+    extraInfo:null
+}
+
+// Array<> generic을 받음
+type A = Array<number>
+
+let f:A = [1, 2, 3, 4]
+
+function printAllNumbers(arr: Array<number>) {
+    
+}
+
+
+type Last = {
+    <T>(arr: T[]):T
+}
+
+const last: Last = (arr) => arr[arr.length - 1]
+
+console.log(last([1, 2, 3, 4]))
+
+type Prepend = {
+    <T, M>(arr: T[], item:M):(T|M)[]
+}
+
+const prepend: Prepend = function(arr, item) {
+    return [item, ...arr]
+}
+
+console.log(prepend([1,2,"d"], "3"))
+```
+
