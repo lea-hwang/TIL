@@ -1,11 +1,16 @@
 import sys
-sys.stdin = open('9095_input.txt', 'r')
+sys.stdin = open("9095_input.txt")
+input = sys.stdin.readline
 
 T = int(input())
-for _ in range(1, T+1):
-    N = int(input())
-    dp_list = [0] * (N+1)
-    dp_list[1] = 1
-    dp_list[2] = 2
-    dp_list[3] = 3
-    print(f' ')
+
+for i in range(T):
+    n = int(input())
+    a = [0] * max(4, n+1)
+    a[1] = 1
+    a[2] = 2
+    a[3] = 4
+    for j in range(4, n+1):
+        a[j] = a[j-1] + a[j-2] + a[j-3]
+       
+    print(a[n])
