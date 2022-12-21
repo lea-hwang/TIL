@@ -29,6 +29,7 @@ delete_p_list = []
 for i in range(1, turn+1):
     delete_p_list.extend(list(combinations(range(1, turn+1), i)))
 
+
 # 만약 해당 괄호가 부분집합 내에 있을 경우, 해당 괄호를 제외하고 출력
 results = []
 for nums in delete_p_list:
