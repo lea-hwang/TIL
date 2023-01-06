@@ -3,7 +3,6 @@ sys.stdin = open("input.txt")
 
 input = sys.stdin.readline
 N, M = map(int, input().split())
-INF = int(1e9)
 
 graph = [[] for _ in range(N+1)]
 
