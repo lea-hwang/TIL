@@ -1,5 +1,11 @@
 # 🌱TIL (Today I Learned)
 
+### 2023.01.12
+
+- [x] [백준-21276](./baekjoon/21276/)
+
+- [x] [리액트-일기장 프로젝트](https://github.com/lea-hw<u>ang/React_Study)
+
 ### 2023.01.11
 
 - [x] [백준-14675](./baekjoon/14675/)
